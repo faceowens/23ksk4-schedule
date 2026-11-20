@@ -7,7 +7,7 @@
   let activeView = 'today';
   let selectedDate = new Date();
   let bellsMode = 'weekday';
-  const minDate = '2026-11-30', maxDate = '2026-12-26';
+  const minDate = '2026-11-23', maxDate = '2026-12-26';
   const weekdays = ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
   const shortDays = ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'];
   const pad = n => String(n).padStart(2,'0');
@@ -26,7 +26,7 @@
   function dayMarkup(s, compact=false) {
     const d = parse(s), lessons = SCHEDULE[s] || [];
     const title = `${shortDays[d.getDay()]}, ${pad(d.getDate())}.${pad(d.getMonth()+1)}`;
-    if (!inRange(s)) return `<div class="empty"><strong>На эту дату расписания нет</strong>В загруженном файле данные есть только с 30.11.2026 по 26.12.2026.</div>`;
+    if (!inRange(s)) return `<div class="empty"><strong>На эту дату расписания нет</strong>В загруженном файле данные есть только с 23.11.2026 по 26.12.2026.</div>`;
     if (!lessons.length) return `<div class="day-card"><div class="day-card-head"><span class="day-name">${title}</span><span class="day-date">${weekdays[d.getDay()]}</span></div><div class="empty"><strong>Пар нет</strong>Выходной или расписание не заполнено.</div></div>`;
     return `<div class="day-card"><div class="day-card-head"><span class="day-name">${title}</span><span class="day-date">${lessons.length} ${lessonWord(lessons.length)}</span></div>${lessons.map(x=>lessonMarkup(x,bellsFor(s))).join('')}</div>`;
   }
