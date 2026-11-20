@@ -141,7 +141,17 @@
 
   function renderBells(){
     const data=bellsMode==='saturday'?BELLS_SATURDAY:BELLS_WEEKDAY;
-    $('bells-content').innerHTML=Object.entries(data).map(([n,t])=>`<div class="bell-row"><div class="bell-n">${n}</div><div><div class="bell-times"><span>${t[0]}</span><span>${t[1]}</span></div><div class="bell-caption">${n} пара · первая и вторая половина</div></div></div>`).join('');
+    $('bells-content').innerHTML=Object.entries(data).map(([n,t])=>{
+      const t1=t[0].split('–');
+      const t2=t[1].split('–');
+      let body;
+      if(t1.length===2 && t2.length===2){
+        body=`<div class="lesson-time-main">${t1[0]} — ${t2[1]}</div><div class="lesson-break">⏸ перерыв ${t1[1]} — ${t2[0]}</div>`;
+      } else {
+        body=`<div class="lesson-time-main">${t[0]} — ${t[1]}</div>`;
+      }
+      return `<div class="bell-row"><div class="bell-n">${n}</div><div>${body}</div></div>`;
+    }).join('');
     document.querySelectorAll('.segment').forEach(b=>b.classList.toggle('active',b.dataset.bells===bellsMode));
   }
 
