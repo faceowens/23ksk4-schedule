@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#10131b">
+  <title>23КСК-4 · Расписание</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div class="brand"><div class="brand-icon">23</div><div><div class="eyebrow">РАСПИСАНИЕ ГРУППЫ</div><h1>23КСК-4</h1></div></div>
+      <div class="live-pill"><span></span> Учебный план</div>
+    </header>
+
+    <nav class="tabs" aria-label="Разделы">
+      <button class="tab active" data-view="today">Сегодня</button>
+      <button class="tab" data-view="tomorrow">Завтра</button>
+      <button class="tab" data-view="week">Неделя</button>
+      <button class="tab" data-view="bells">Звонки</button>
+    </nav>
+
+    <section id="schedule-view">
+      <div class="date-head">
+        <div><div class="eyebrow" id="view-kicker">ВАШ ДЕНЬ</div><h2 id="date-title">Загрузка…</h2><p id="date-subtitle" class="muted"></p></div>
+        <button class="icon-button" id="calendar-toggle" aria-label="Выбрать дату">▦</button>
+      </div>
+      <div class="calendar-panel hidden" id="calendar-panel">
+        <label for="date-picker">Выбрать дату</label>
+        <input id="date-picker" type="date" min="2026-11-30" max="2026-12-26">
+      </div>
+      <div id="content"></div>
+    </section>
+
+    <section id="bells-view" class="hidden">
+      <div class="date-head"><div><div class="eyebrow">ВРЕМЯ ЗАНЯТИЙ</div><h2>Расписание звонков</h2><p class="muted">Будни и суббота</p></div><div class="bell-icon">◷</div></div>
+      <div class="segmented"><button class="segment active" data-bells="weekday">Пн — Пт</button><button class="segment" data-bells="saturday">Суббота</button></div>
+      <div id="bells-content"></div>
+    </section>
+
+    <footer><span>23КСК-4</span><span>Данные: 30.11–26.12.2026</span></footer>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
