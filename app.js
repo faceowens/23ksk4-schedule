@@ -39,7 +39,8 @@
       <div>
         ${timeHtml}
         <p class="lesson-title">${safe(subject)}</p>
-        <div class="lesson-meta"><span>Преподаватель: ${safe(teacher)}</span><span>Аудитория: ${safe(room)}</span></div>
+        <p class="lesson-title lesson-room">ауд. ${safe(room)}</p>
+        <div class="lesson-meta"><span>Преподаватель: ${safe(teacher)}</span></div>
       </div>
     </div>`;
   }
